@@ -8,16 +8,16 @@ if %errorlevel% neq 0 (
 
 setlocal EnableExtensions EnableDelayedExpansion
 color 0B
-title TempC by 8bit_binary freeware lisence
+title TempC by 8bit_binary freeware license
 
-:: Log file on Desktop
+:: Log file on Desktop (Safely wrapped in quotes)
 set "LOGFILE=%USERPROFILE%\Desktop\TempC_log.txt"
 
 :: Start logging
 call :log "=================================================="
 call :log "TempC started"
 call :log "This is a batch file that cleans Temp files,runs sfc scan,empties the recycle bin"
-call :log "Title: TempC by 8bit_binary freeware lisence"
+call :log "Title: TempC by 8bit_binary freeware license"
 call :log "Log file: %LOGFILE%"
 call :log "=================================================="
 call :log ""
@@ -50,5 +50,6 @@ exit /b
 
 :log
 echo %~1
-echo %~1>> "%LOGFILE%"
+:: FIX: Quotes placed around the variable destination to handle spaces in folder paths safely
+echo %~1>>"%LOGFILE%"
 exit /b
